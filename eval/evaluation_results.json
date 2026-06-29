@@ -1,0 +1,91 @@
+{
+  "om": {
+    "process_objects": [
+      "customers",
+      "items",
+      "orders",
+      "packages"
+    ],
+    "relationship_objects": [
+      "customers",
+      "items",
+      "orders",
+      "packages",
+      "products"
+    ],
+    "log_emd": {
+      "customers": 0.028819386715207545,
+      "items": 0.10633866013532703,
+      "orders": 0.12393436538721608,
+      "packages": 0.11438796321191513
+    },
+    "cardinality_emd": {
+      "customers -> orders": 0.02881938671520754,
+      "items -> products": 0.0,
+      "orders -> items": 0.009747294372294348,
+      "packages -> items": 0.01344132361335484
+    }
+  },
+  "p2p": {
+    "process_objects": [
+      "goods_receipt",
+      "invoice_receipt",
+      "payment",
+      "purchase_order",
+      "purchase_requisition",
+      "quotation"
+    ],
+    "relationship_objects": [
+      "goods_receipt",
+      "invoice_receipt",
+      "payment",
+      "purchase_order",
+      "purchase_requisition",
+      "quotation"
+    ],
+    "log_emd": {
+      "goods_receipt": 0.20895078420767982,
+      "invoice_receipt": 0.18904352137326189,
+      "payment": 0.12353414992940828,
+      "purchase_order": 0.00332520809742338,
+      "purchase_requisition": 0.19201725997842498,
+      "quotation": 0.007173678532901832
+    },
+    "cardinality_emd": {
+      "invoice_receipt -> goods_receipt": 0.004701234265412971,
+      "invoice_receipt -> payment": 0.0,
+      "purchase_order -> goods_receipt": 0.0056023071167000576,
+      "purchase_requisition -> quotation": 0.0,
+      "quotation -> purchase_order": 0.009528946422150249
+    }
+  },
+  "logistics": {
+    "process_objects": [
+      "Container",
+      "Customer_Order",
+      "Handling_Unit",
+      "Transport_Document",
+      "Vehicle"
+    ],
+    "relationship_objects": [
+      "Container",
+      "Customer_Order",
+      "Handling_Unit",
+      "Transport_Document",
+      "Vehicle"
+    ],
+    "log_emd": {
+      "Container": 0.04626105802519733,
+      "Customer_Order": 0.0,
+      "Handling_Unit": 0.0,
+      "Transport_Document": 0.0,
+      "Vehicle": 0.24037833902722625
+    },
+    "cardinality_emd": {
+      "Container -> Handling_Unit": 0.01194541965302151,
+      "Customer_Order -> Transport_Document": 0.01,
+      "Transport_Document -> Container": 0.012420033670033562,
+      "Vehicle -> Container": 0.07182420838777552
+    }
+  }
+}

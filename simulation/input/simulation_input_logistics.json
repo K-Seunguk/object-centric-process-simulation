@@ -1,0 +1,769 @@
+{
+  "dataset": "logistics",
+  "process_model": {
+    "PLACES": [
+      "Container_p_10",
+      "Container_p_11",
+      "Container_p_5",
+      "Container_p_6",
+      "Container_p_8",
+      "Container_p_9",
+      "Container_sink",
+      "Container_source",
+      "Customer_Order_p_3",
+      "Customer_Order_sink",
+      "Customer_Order_source",
+      "Handling_Unit_sink",
+      "Handling_Unit_source",
+      "Transport_Document_p_3",
+      "Transport_Document_sink",
+      "Transport_Document_source",
+      "Vehicle_p_5",
+      "Vehicle_p_6",
+      "Vehicle_sink",
+      "Vehicle_source"
+    ],
+    "TRANSITIONS": {
+      "act__Collect_Goods": "Collect_Goods",
+      "act__Order_Empty_Containers": "Order_Empty_Containers",
+      "act__Load_to_Vehicle": "Load_to_Vehicle",
+      "act__Create_Transport_Document": "Create_Transport_Document",
+      "act__Depart": "Depart",
+      "act__Book_Vehicles": "Book_Vehicles",
+      "Container__skip_5": null,
+      "act__Reschedule_Container": "Reschedule_Container",
+      "act__Load_Truck": "Load_Truck",
+      "act__Pick_Up_Empty_Container": "Pick_Up_Empty_Container",
+      "Container__skip_3": null,
+      "act__Drive_to_Terminal": "Drive_to_Terminal",
+      "act__Weigh": "Weigh",
+      "act__Place_in_Stock": "Place_in_Stock",
+      "act__Bring_to_Loading_Bay": "Bring_to_Loading_Bay",
+      "act__Register_Customer_Order": "Register_Customer_Order",
+      "Vehicle__tau_1": null,
+      "Vehicle__skip_4": null
+    },
+    "ARCS": [
+      [
+        "Vehicle__skip_4",
+        "Vehicle_p_5"
+      ],
+      [
+        "act__Order_Empty_Containers",
+        "Container_source"
+      ],
+      [
+        "Transport_Document_p_3",
+        "act__Order_Empty_Containers"
+      ],
+      [
+        "Container__skip_3",
+        "Container_p_5"
+      ],
+      [
+        "Container__skip_5",
+        "Container_sink"
+      ],
+      [
+        "Customer_Order_source",
+        "act__Register_Customer_Order"
+      ],
+      [
+        "act__Place_in_Stock",
+        "Container_p_10"
+      ],
+      [
+        "act__Reschedule_Container",
+        "Container_sink"
+      ],
+      [
+        "act__Pick_Up_Empty_Container",
+        "Container_p_5"
+      ],
+      [
+        "Container_p_6",
+        "Container__skip_3"
+      ],
+      [
+        "Container_source",
+        "act__Pick_Up_Empty_Container"
+      ],
+      [
+        "Container_p_9",
+        "act__Place_in_Stock"
+      ],
+      [
+        "Handling_Unit_source",
+        "act__Collect_Goods"
+      ],
+      [
+        "act__Order_Empty_Containers",
+        "Transport_Document_sink"
+      ],
+      [
+        "act__Depart",
+        "Vehicle_sink"
+      ],
+      [
+        "Container_sink",
+        "act__Load_to_Vehicle"
+      ],
+      [
+        "Vehicle_source",
+        "Vehicle__tau_1"
+      ],
+      [
+        "act__Book_Vehicles",
+        "Vehicle_source"
+      ],
+      [
+        "act__Create_Transport_Document",
+        "Customer_Order_sink"
+      ],
+      [
+        "act__Collect_Goods",
+        "Handling_Unit_sink"
+      ],
+      [
+        "act__Book_Vehicles",
+        "Transport_Document_p_3"
+      ],
+      [
+        "Vehicle_p_6",
+        "Vehicle__skip_4"
+      ],
+      [
+        "Vehicle_p_6",
+        "act__Depart"
+      ],
+      [
+        "Container_p_5",
+        "act__Load_Truck"
+      ],
+      [
+        "act__Weigh",
+        "Container_p_9"
+      ],
+      [
+        "act__Load_Truck",
+        "Container_p_6"
+      ],
+      [
+        "Container_p_10",
+        "act__Bring_to_Loading_Bay"
+      ],
+      [
+        "Container_p_11",
+        "Container__skip_5"
+      ],
+      [
+        "Container_p_6",
+        "act__Drive_to_Terminal"
+      ],
+      [
+        "Container_p_8",
+        "act__Weigh"
+      ],
+      [
+        "act__Bring_to_Loading_Bay",
+        "Container_p_11"
+      ],
+      [
+        "Container_p_11",
+        "act__Reschedule_Container"
+      ],
+      [
+        "act__Drive_to_Terminal",
+        "Container_p_8"
+      ],
+      [
+        "Transport_Document_source",
+        "act__Book_Vehicles"
+      ],
+      [
+        "act__Register_Customer_Order",
+        "Customer_Order_p_3"
+      ],
+      [
+        "Customer_Order_p_3",
+        "act__Create_Transport_Document"
+      ],
+      [
+        "Vehicle_p_5",
+        "act__Load_to_Vehicle"
+      ],
+      [
+        "Handling_Unit_sink",
+        "act__Load_Truck"
+      ],
+      [
+        "Vehicle__tau_1",
+        "Vehicle_p_5"
+      ],
+      [
+        "act__Create_Transport_Document",
+        "Transport_Document_source"
+      ],
+      [
+        "act__Load_to_Vehicle",
+        "Vehicle_p_6"
+      ]
+    ]
+  },
+  "objects": {
+    "object_types": [
+      "Container",
+      "Customer_Order",
+      "Forklift",
+      "Handling_Unit",
+      "Transport_Document",
+      "Truck",
+      "Vehicle"
+    ],
+    "resource_object_types": [
+      "Forklift",
+      "Truck"
+    ],
+    "reusable_object_types": [],
+    "object_lifecycle_events": {
+      "Container": {
+        "CREATE": [
+          "Order_Empty_Containers"
+        ],
+        "INCORPORATE": [
+          "Load_to_Vehicle"
+        ]
+      },
+      "Customer_Order": {
+        "INITIATE": [
+          "Register_Customer_Order"
+        ]
+      },
+      "Handling_Unit": {
+        "INITIATE": [
+          "Collect_Goods"
+        ],
+        "INCORPORATE": [
+          "Load_Truck"
+        ]
+      },
+      "Transport_Document": {
+        "CREATE": [
+          "Create_Transport_Document"
+        ]
+      },
+      "Vehicle": {
+        "CREATE": [
+          "Book_Vehicles"
+        ]
+      }
+    },
+    "id_pools": {}
+  },
+  "relations": {
+    "object_relation_targets": {
+      "Container": [
+        "Handling_Unit"
+      ],
+      "Customer_Order": [
+        "Transport_Document"
+      ],
+      "Transport_Document": [
+        "Container"
+      ],
+      "Vehicle": [
+        "Container"
+      ]
+    },
+    "cardinality_distribution": {
+      "Container": {
+        "Handling_Unit": {
+          "1:1": 0.05,
+          "1:2": 0.047,
+          "1:3": 0.048,
+          "1:4": 0.044,
+          "1:5": 0.047,
+          "1:6": 0.764
+        }
+      },
+      "Customer_Order": {
+        "Transport_Document": {
+          "1:1": 1.0
+        }
+      },
+      "Transport_Document": {
+        "Container": {
+          "1:1": 0.051,
+          "1:2": 0.229,
+          "1:3": 0.259,
+          "1:4": 0.222,
+          "1:5": 0.239
+        }
+      },
+      "Vehicle": {
+        "Container": {
+          "1:10": 0.024,
+          "1:11": 0.063,
+          "1:12": 0.071,
+          "1:13": 0.024,
+          "1:14": 0.094,
+          "1:15": 0.016,
+          "1:16": 0.047,
+          "1:17": 0.047,
+          "1:18": 0.063,
+          "1:19": 0.071,
+          "1:2": 0.039,
+          "1:20": 0.031,
+          "1:21": 0.055,
+          "1:22": 0.039,
+          "1:23": 0.024,
+          "1:24": 0.008,
+          "1:25": 0.016,
+          "1:26": 0.016,
+          "1:27": 0.016,
+          "1:29": 0.008,
+          "1:3": 0.016,
+          "1:30": 0.016,
+          "1:32": 0.024,
+          "1:39": 0.008,
+          "1:5": 0.008,
+          "1:6": 0.047,
+          "1:7": 0.031,
+          "1:8": 0.039,
+          "1:9": 0.039
+        }
+      }
+    },
+    "reusable_selection_distribution": {}
+  },
+  "resources": {
+    "event_resource_pools": {
+      "Bring_to_Loading_Bay": {
+        "Forklift": [
+          "fl1",
+          "fl2",
+          "fl3"
+        ]
+      },
+      "Drive_to_Terminal": {
+        "Truck": [
+          "tr1",
+          "tr2",
+          "tr3",
+          "tr4",
+          "tr5",
+          "tr6"
+        ]
+      },
+      "Load_Truck": {
+        "Truck": [
+          "tr1",
+          "tr2",
+          "tr3",
+          "tr4",
+          "tr5",
+          "tr6"
+        ]
+      },
+      "Load_to_Vehicle": {
+        "Forklift": [
+          "fl1",
+          "fl2",
+          "fl3"
+        ]
+      },
+      "Place_in_Stock": {
+        "Forklift": [
+          "fl1",
+          "fl2",
+          "fl3"
+        ]
+      },
+      "Weigh": {
+        "Forklift": [
+          "fl1",
+          "fl2",
+          "fl3"
+        ]
+      }
+    },
+    "resource_event_participation": {
+      "Forklift": {
+        "fl1": [
+          "Bring_to_Loading_Bay",
+          "Load_to_Vehicle",
+          "Place_in_Stock",
+          "Weigh"
+        ],
+        "fl2": [
+          "Bring_to_Loading_Bay",
+          "Load_to_Vehicle",
+          "Place_in_Stock",
+          "Weigh"
+        ],
+        "fl3": [
+          "Bring_to_Loading_Bay",
+          "Load_to_Vehicle",
+          "Place_in_Stock",
+          "Weigh"
+        ]
+      },
+      "Truck": {
+        "tr1": [
+          "Drive_to_Terminal",
+          "Load_Truck"
+        ],
+        "tr2": [
+          "Drive_to_Terminal",
+          "Load_Truck"
+        ],
+        "tr3": [
+          "Drive_to_Terminal",
+          "Load_Truck"
+        ],
+        "tr4": [
+          "Drive_to_Terminal",
+          "Load_Truck"
+        ],
+        "tr5": [
+          "Drive_to_Terminal",
+          "Load_Truck"
+        ],
+        "tr6": [
+          "Drive_to_Terminal",
+          "Load_Truck"
+        ]
+      }
+    },
+    "resource_event_duration_distribution": {
+      "Forklift": {
+        "fl1": {
+          "Bring_to_Loading_Bay": {
+            "mean": 2564.572,
+            "std": 5952.809
+          },
+          "Load_to_Vehicle": {
+            "mean": 9601.617,
+            "std": 38117.911
+          },
+          "Place_in_Stock": {
+            "mean": 48041.875,
+            "std": 73764.484
+          },
+          "Weigh": {
+            "mean": 1814.927,
+            "std": 12906.432
+          }
+        },
+        "fl2": {
+          "Bring_to_Loading_Bay": {
+            "mean": 3359.775,
+            "std": 12065.557
+          },
+          "Load_to_Vehicle": {
+            "mean": 9134.309,
+            "std": 32097.79
+          },
+          "Place_in_Stock": {
+            "mean": 50014.306,
+            "std": 74223.311
+          },
+          "Weigh": {
+            "mean": 1595.394,
+            "std": 12766.739
+          }
+        },
+        "fl3": {
+          "Bring_to_Loading_Bay": {
+            "mean": 3005.023,
+            "std": 10936.158
+          },
+          "Load_to_Vehicle": {
+            "mean": 11073.115,
+            "std": 38272.161
+          },
+          "Place_in_Stock": {
+            "mean": 48170.508,
+            "std": 71914.959
+          },
+          "Weigh": {
+            "mean": 2013.231,
+            "std": 15315.293
+          }
+        }
+      },
+      "Truck": {
+        "tr1": {
+          "Drive_to_Terminal": {
+            "mean": 84752.389,
+            "std": 96300.476
+          },
+          "Load_Truck": {
+            "mean": 6166.341,
+            "std": 21235.769
+          }
+        },
+        "tr2": {
+          "Drive_to_Terminal": {
+            "mean": 86894.47,
+            "std": 107126.782
+          },
+          "Load_Truck": {
+            "mean": 6415.64,
+            "std": 22513.375
+          }
+        },
+        "tr3": {
+          "Drive_to_Terminal": {
+            "mean": 81018.409,
+            "std": 98765.744
+          },
+          "Load_Truck": {
+            "mean": 6706.097,
+            "std": 24189.641
+          }
+        },
+        "tr4": {
+          "Drive_to_Terminal": {
+            "mean": 86300.852,
+            "std": 105351.518
+          },
+          "Load_Truck": {
+            "mean": 6086.426,
+            "std": 21999.18
+          }
+        },
+        "tr5": {
+          "Drive_to_Terminal": {
+            "mean": 82764.904,
+            "std": 97499.569
+          },
+          "Load_Truck": {
+            "mean": 6263.072,
+            "std": 22817.897
+          }
+        },
+        "tr6": {
+          "Drive_to_Terminal": {
+            "mean": 83118.73,
+            "std": 98119.331
+          },
+          "Load_Truck": {
+            "mean": 6412.15,
+            "std": 23074.313
+          }
+        }
+      }
+    }
+  },
+  "events": {
+    "event_object_roles": {
+      "Book_Vehicles": {
+        "Transport_Document": [
+          "VHs booked for TD"
+        ],
+        "Vehicle": [
+          "CREATE"
+        ]
+      },
+      "Bring_to_Loading_Bay": {
+        "Container": [
+          "CR brought to bay"
+        ],
+        "Forklift": [
+          "RESOURCE"
+        ]
+      },
+      "Collect_Goods": {
+        "Handling_Unit": [
+          "INITIATE"
+        ]
+      },
+      "Create_Transport_Document": {
+        "Customer_Order": [
+          "TD created for CO"
+        ],
+        "Transport_Document": [
+          "CREATE"
+        ]
+      },
+      "Depart": {
+        "Vehicle": [
+          "VH departed"
+        ]
+      },
+      "Drive_to_Terminal": {
+        "Container": [
+          "CR moved"
+        ],
+        "Truck": [
+          "RESOURCE"
+        ]
+      },
+      "Load_Truck": {
+        "Container": [
+          "CR laded"
+        ],
+        "Handling_Unit": [
+          "INCORPORATE"
+        ],
+        "Truck": [
+          "RESOURCE"
+        ]
+      },
+      "Load_to_Vehicle": {
+        "Container": [
+          "INCORPORATE"
+        ],
+        "Forklift": [
+          "RESOURCE"
+        ],
+        "Vehicle": [
+          "VH laded"
+        ]
+      },
+      "Order_Empty_Containers": {
+        "Container": [
+          "CREATE"
+        ],
+        "Transport_Document": [
+          "ordered for TD"
+        ]
+      },
+      "Pick_Up_Empty_Container": {
+        "Container": [
+          "CR picked"
+        ]
+      },
+      "Place_in_Stock": {
+        "Container": [
+          "CR stored"
+        ],
+        "Forklift": [
+          "RESOURCE"
+        ]
+      },
+      "Register_Customer_Order": {
+        "Customer_Order": [
+          "INITIATE"
+        ]
+      },
+      "Reschedule_Container": {
+        "Container": [
+          "CR rescheduled"
+        ]
+      },
+      "Weigh": {
+        "Container": [
+          "CR weighted"
+        ],
+        "Forklift": [
+          "RESOURCE"
+        ]
+      }
+    },
+    "event_participants": {
+      "Book_Vehicles": [
+        "Transport_Document",
+        "Vehicle"
+      ],
+      "Bring_to_Loading_Bay": [
+        "Container",
+        "Forklift"
+      ],
+      "Collect_Goods": [
+        "Handling_Unit"
+      ],
+      "Create_Transport_Document": [
+        "Customer_Order",
+        "Transport_Document"
+      ],
+      "Depart": [
+        "Vehicle"
+      ],
+      "Drive_to_Terminal": [
+        "Container",
+        "Truck"
+      ],
+      "Load_Truck": [
+        "Container",
+        "Handling_Unit",
+        "Truck"
+      ],
+      "Load_to_Vehicle": [
+        "Container",
+        "Forklift",
+        "Vehicle"
+      ],
+      "Order_Empty_Containers": [
+        "Container",
+        "Transport_Document"
+      ],
+      "Pick_Up_Empty_Container": [
+        "Container"
+      ],
+      "Place_in_Stock": [
+        "Container",
+        "Forklift"
+      ],
+      "Register_Customer_Order": [
+        "Customer_Order"
+      ],
+      "Reschedule_Container": [
+        "Container"
+      ],
+      "Weigh": [
+        "Container",
+        "Forklift"
+      ]
+    },
+    "event_object_iteration": [
+      {
+        "iteration_type": "INCORPORATE",
+        "event_type": "Load_to_Vehicle",
+        "source_object_type": "Vehicle",
+        "target_object_type": "Container",
+        "target_count_distribution": {
+          "1": 1.0
+        }
+      },
+      {
+        "iteration_type": "INCORPORATE",
+        "event_type": "Load_Truck",
+        "source_object_type": "Container",
+        "target_object_type": "Handling_Unit",
+        "target_count_distribution": {
+          "1": 1.0
+        }
+      }
+    ]
+  },
+  "performance": {
+    "event_duration_distribution": {},
+    "arrival_distribution": {
+      "Customer_Order": {
+        "lambda": 1.521e-05,
+        "mean_interarrival_time": 65758.003,
+        "std_interarrival_time": 65607.371,
+        "start_place": "Customer_Order_source",
+        "start_events": [
+          "Register_Customer_Order"
+        ],
+        "is_top_level": true
+      },
+      "Handling_Unit": {
+        "lambda": 0.00026852,
+        "mean_interarrival_time": 3724.158,
+        "std_interarrival_time": 18357.009,
+        "start_place": "Handling_Unit_source",
+        "start_events": [
+          "Collect_Goods"
+        ],
+        "is_top_level": false
+      }
+    }
+  },
+  "decision_points": {
+    "branch_probabilities": {}
+  }
+}

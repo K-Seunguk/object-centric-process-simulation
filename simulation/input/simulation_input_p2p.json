@@ -1,0 +1,508 @@
+{
+  "dataset": "p2p",
+  "process_model": {
+    "PLACES": [
+      "goods_receipt_sink",
+      "goods_receipt_source",
+      "invoice_receipt_p_5",
+      "invoice_receipt_p_6",
+      "invoice_receipt_sink",
+      "invoice_receipt_source",
+      "payment_p_5",
+      "payment_p_6",
+      "payment_sink",
+      "payment_source",
+      "purchase_order_p_5",
+      "purchase_order_p_6",
+      "purchase_order_sink",
+      "purchase_order_source",
+      "purchase_requisition_p_3",
+      "purchase_requisition_p_4",
+      "purchase_requisition_sink",
+      "purchase_requisition_source",
+      "quotation_p_5",
+      "quotation_p_6",
+      "quotation_sink",
+      "quotation_source"
+    ],
+    "TRANSITIONS": {
+      "purchase_order__skip_5": null,
+      "act__Create_Request_for_Quotation": "Create_Request_for_Quotation",
+      "act__Create_Purchase_Order": "Create_Purchase_Order",
+      "act__Approve_Purchase_Requisition": "Approve_Purchase_Requisition",
+      "act__Create_Invoice_Receipt": "Create_Invoice_Receipt",
+      "invoice_receipt__skip_5": null,
+      "invoice_receipt__skip_6": null,
+      "invoice_receipt__tau_1": null,
+      "payment__tau_1": null,
+      "payment__skip_5": null,
+      "act__Create_Purchase_Requisition": "Create_Purchase_Requisition",
+      "act__Delegate_Purchase_Requisition_Approval": "Delegate_Purchase_Requisition_Approval",
+      "quotation__tau_1": null,
+      "act__Perform_Two_Way_Match": "Perform_Two_Way_Match",
+      "act__Execute_Payment": "Execute_Payment",
+      "payment__skip_6": null,
+      "act__Approve_Purchase_Order": "Approve_Purchase_Order",
+      "act__Create_Goods_Receipt": "Create_Goods_Receipt",
+      "purchase_order__skip_4": null,
+      "quotation__skip_5": null,
+      "quotation__skip_6": null
+    },
+    "ARCS": [
+      [
+        "quotation__skip_5",
+        "quotation_p_5"
+      ],
+      [
+        "purchase_requisition_p_4",
+        "act__Create_Request_for_Quotation"
+      ],
+      [
+        "payment_p_6",
+        "payment__skip_5"
+      ],
+      [
+        "payment__tau_1",
+        "payment_p_5"
+      ],
+      [
+        "goods_receipt_source",
+        "act__Create_Invoice_Receipt"
+      ],
+      [
+        "act__Create_Invoice_Receipt",
+        "goods_receipt_sink"
+      ],
+      [
+        "invoice_receipt__skip_6",
+        "invoice_receipt_sink"
+      ],
+      [
+        "invoice_receipt__tau_1",
+        "invoice_receipt_p_5"
+      ],
+      [
+        "act__Perform_Two_Way_Match",
+        "invoice_receipt_p_6"
+      ],
+      [
+        "invoice_receipt_p_6",
+        "invoice_receipt__skip_5"
+      ],
+      [
+        "invoice_receipt__skip_5",
+        "invoice_receipt_p_5"
+      ],
+      [
+        "payment_p_5",
+        "act__Execute_Payment"
+      ],
+      [
+        "purchase_order__skip_5",
+        "purchase_order_sink"
+      ],
+      [
+        "act__Create_Purchase_Requisition",
+        "purchase_requisition_p_3"
+      ],
+      [
+        "act__Create_Invoice_Receipt",
+        "invoice_receipt_source"
+      ],
+      [
+        "purchase_requisition_p_3",
+        "act__Delegate_Purchase_Requisition_Approval"
+      ],
+      [
+        "act__Create_Purchase_Order",
+        "quotation_p_6"
+      ],
+      [
+        "act__Create_Goods_Receipt",
+        "purchase_order_p_6"
+      ],
+      [
+        "quotation__tau_1",
+        "quotation_p_5"
+      ],
+      [
+        "quotation_p_6",
+        "quotation__skip_5"
+      ],
+      [
+        "quotation_p_5",
+        "act__Create_Purchase_Order"
+      ],
+      [
+        "act__Create_Request_for_Quotation",
+        "quotation_source"
+      ],
+      [
+        "quotation__skip_6",
+        "quotation_sink"
+      ],
+      [
+        "payment__skip_5",
+        "payment_p_5"
+      ],
+      [
+        "act__Approve_Purchase_Requisition",
+        "purchase_requisition_p_4"
+      ],
+      [
+        "purchase_order_p_5",
+        "act__Create_Goods_Receipt"
+      ],
+      [
+        "purchase_order_p_6",
+        "purchase_order__skip_5"
+      ],
+      [
+        "quotation_p_6",
+        "quotation__skip_6"
+      ],
+      [
+        "act__Create_Purchase_Order",
+        "purchase_order_source"
+      ],
+      [
+        "act__Delegate_Purchase_Requisition_Approval",
+        "purchase_requisition_p_4"
+      ],
+      [
+        "act__Create_Goods_Receipt",
+        "goods_receipt_source"
+      ],
+      [
+        "payment__skip_6",
+        "payment_sink"
+      ],
+      [
+        "payment_source",
+        "payment__tau_1"
+      ],
+      [
+        "purchase_order_source",
+        "act__Approve_Purchase_Order"
+      ],
+      [
+        "invoice_receipt_p_6",
+        "invoice_receipt__skip_6"
+      ],
+      [
+        "invoice_receipt_source",
+        "invoice_receipt__tau_1"
+      ],
+      [
+        "invoice_receipt_p_5",
+        "act__Perform_Two_Way_Match"
+      ],
+      [
+        "act__Execute_Payment",
+        "payment_p_6"
+      ],
+      [
+        "payment_p_6",
+        "payment__skip_6"
+      ],
+      [
+        "act__Approve_Purchase_Order",
+        "purchase_order_p_5"
+      ],
+      [
+        "purchase_order_p_6",
+        "purchase_order__skip_4"
+      ],
+      [
+        "purchase_order__skip_4",
+        "purchase_order_p_5"
+      ],
+      [
+        "act__Create_Request_for_Quotation",
+        "purchase_requisition_sink"
+      ],
+      [
+        "goods_receipt_sink",
+        "act__Perform_Two_Way_Match"
+      ],
+      [
+        "act__Perform_Two_Way_Match",
+        "payment_source"
+      ],
+      [
+        "purchase_requisition_source",
+        "act__Create_Purchase_Requisition"
+      ],
+      [
+        "quotation_source",
+        "quotation__tau_1"
+      ],
+      [
+        "purchase_requisition_p_3",
+        "act__Approve_Purchase_Requisition"
+      ]
+    ]
+  },
+  "objects": {
+    "object_types": [
+      "goods_receipt",
+      "invoice_receipt",
+      "payment",
+      "purchase_order",
+      "purchase_requisition",
+      "quotation"
+    ],
+    "resource_object_types": [],
+    "reusable_object_types": [],
+    "object_lifecycle_events": {
+      "goods_receipt": {
+        "CREATE": [
+          "Create_Goods_Receipt"
+        ],
+        "INCORPORATE": [
+          "Perform_Two_Way_Match"
+        ]
+      },
+      "invoice_receipt": {
+        "CREATE": [
+          "Create_Invoice_Receipt"
+        ]
+      },
+      "payment": {
+        "CREATE": [
+          "Perform_Two_Way_Match"
+        ]
+      },
+      "purchase_order": {
+        "CREATE": [
+          "Create_Purchase_Order"
+        ]
+      },
+      "purchase_requisition": {
+        "INITIATE": [
+          "Create_Purchase_Requisition"
+        ]
+      },
+      "quotation": {
+        "CREATE": [
+          "Create_Request_for_Quotation"
+        ]
+      }
+    },
+    "id_pools": {}
+  },
+  "relations": {
+    "object_relation_targets": {
+      "invoice_receipt": [
+        "goods_receipt",
+        "payment"
+      ],
+      "purchase_order": [
+        "goods_receipt"
+      ],
+      "purchase_requisition": [
+        "quotation"
+      ],
+      "quotation": [
+        "purchase_order"
+      ]
+    },
+    "cardinality_distribution": {
+      "invoice_receipt": {
+        "goods_receipt": {
+          "1:1": 0.372,
+          "1:2": 0.285,
+          "1:3": 0.22,
+          "1:4": 0.123
+        },
+        "payment": {
+          "1:1": 1.0
+        }
+      },
+      "purchase_order": {
+        "goods_receipt": {
+          "1:1": 0.216,
+          "1:2": 0.267,
+          "1:3": 0.29,
+          "1:4": 0.228
+        }
+      },
+      "purchase_requisition": {
+        "quotation": {
+          "1:1": 1.0
+        }
+      },
+      "quotation": {
+        "purchase_order": {
+          "1:1": 0.533,
+          "1:2": 0.27,
+          "1:3": 0.138,
+          "1:4": 0.059
+        }
+      }
+    },
+    "reusable_selection_distribution": {}
+  },
+  "resources": {
+    "event_resource_pools": {},
+    "resource_event_participation": {},
+    "resource_event_duration_distribution": {}
+  },
+  "events": {
+    "event_object_roles": {
+      "Approve_Purchase_Order": {
+        "purchase_order": [
+          "purchase_order"
+        ]
+      },
+      "Approve_Purchase_Requisition": {
+        "purchase_requisition": [
+          "purchase_requisition"
+        ]
+      },
+      "Create_Goods_Receipt": {
+        "goods_receipt": [
+          "CREATE"
+        ],
+        "purchase_order": [
+          "purchase_order"
+        ]
+      },
+      "Create_Invoice_Receipt": {
+        "goods_receipt": [
+          "goods receipt"
+        ],
+        "invoice_receipt": [
+          "CREATE"
+        ]
+      },
+      "Create_Purchase_Order": {
+        "purchase_order": [
+          "CREATE"
+        ],
+        "quotation": [
+          "quotation"
+        ]
+      },
+      "Create_Purchase_Requisition": {
+        "purchase_requisition": [
+          "INITIATE"
+        ]
+      },
+      "Create_Request_for_Quotation": {
+        "purchase_requisition": [
+          "purchase_requisition"
+        ],
+        "quotation": [
+          "CREATE"
+        ]
+      },
+      "Delegate_Purchase_Requisition_Approval": {
+        "purchase_requisition": [
+          "purchase_requisition"
+        ]
+      },
+      "Execute_Payment": {
+        "payment": [
+          "payment"
+        ]
+      },
+      "Perform_Two_Way_Match": {
+        "goods_receipt": [
+          "INCORPORATE"
+        ],
+        "invoice_receipt": [
+          "invoice receipt"
+        ],
+        "payment": [
+          "CREATE"
+        ]
+      }
+    },
+    "event_participants": {
+      "Approve_Purchase_Order": [
+        "purchase_order"
+      ],
+      "Approve_Purchase_Requisition": [
+        "purchase_requisition"
+      ],
+      "Create_Goods_Receipt": [
+        "goods_receipt",
+        "purchase_order"
+      ],
+      "Create_Invoice_Receipt": [
+        "goods_receipt",
+        "invoice_receipt"
+      ],
+      "Create_Purchase_Order": [
+        "purchase_order",
+        "quotation"
+      ],
+      "Create_Purchase_Requisition": [
+        "purchase_requisition"
+      ],
+      "Create_Request_for_Quotation": [
+        "purchase_requisition",
+        "quotation"
+      ],
+      "Delegate_Purchase_Requisition_Approval": [
+        "purchase_requisition"
+      ],
+      "Execute_Payment": [
+        "payment"
+      ],
+      "Perform_Two_Way_Match": [
+        "goods_receipt",
+        "invoice_receipt",
+        "payment"
+      ]
+    },
+    "event_object_iteration": [
+      {
+        "iteration_type": "CREATE",
+        "event_type": "Create_Goods_Receipt",
+        "source_object_type": "purchase_order",
+        "target_object_type": "goods_receipt",
+        "target_count_distribution": {
+          "1": 1.0
+        }
+      },
+      {
+        "iteration_type": "CREATE",
+        "event_type": "Create_Purchase_Order",
+        "source_object_type": "quotation",
+        "target_object_type": "purchase_order",
+        "target_count_distribution": {
+          "1": 1.0
+        }
+      },
+      {
+        "iteration_type": "INCORPORATE",
+        "event_type": "Perform_Two_Way_Match",
+        "source_object_type": "invoice_receipt",
+        "target_object_type": "goods_receipt",
+        "target_count_distribution": {
+          "1": 1.0
+        }
+      }
+    ]
+  },
+  "performance": {
+    "event_duration_distribution": {},
+    "arrival_distribution": {
+      "purchase_requisition": {
+        "lambda": 9.21e-06,
+        "mean_interarrival_time": 108548.324,
+        "std_interarrival_time": 126034.776,
+        "start_place": "purchase_requisition_source",
+        "start_events": [
+          "Create_Purchase_Requisition"
+        ],
+        "is_top_level": true
+      }
+    }
+  },
+  "decision_points": {
+    "branch_probabilities": {}
+  }
+}

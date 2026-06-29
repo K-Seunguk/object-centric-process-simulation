@@ -1,0 +1,944 @@
+{
+  "dataset": "om",
+  "process_model": {
+    "PLACES": [
+      "customers_source",
+      "items_p_3",
+      "items_p_4",
+      "items_sink",
+      "items_source",
+      "orders_p_3",
+      "orders_p_4",
+      "orders_p_5",
+      "orders_p_6",
+      "orders_sink",
+      "orders_source",
+      "packages_p_3",
+      "packages_p_4",
+      "packages_p_5",
+      "packages_p_6",
+      "packages_sink",
+      "packages_source"
+    ],
+    "TRANSITIONS": {
+      "act__package_delivered": "package_delivered",
+      "items__skip_1": null,
+      "act__reorder_item": "reorder_item",
+      "orders__skip_1": null,
+      "orders__skip_4": null,
+      "act__send_package": "send_package",
+      "packages__skip_1": null,
+      "packages__skip_5": null,
+      "act__pay_order": "pay_order",
+      "packages__init_loop_2": null,
+      "act__failed_delivery": "failed_delivery",
+      "act__place_order": "place_order",
+      "packages__skip_4": null,
+      "act__pick_item": "pick_item",
+      "act__confirm_order": "confirm_order",
+      "act__item_out_of_stock": "item_out_of_stock",
+      "act__payment_reminder": "payment_reminder",
+      "orders__init_loop_2": null,
+      "orders__skip_5": null,
+      "act__create_package": "create_package"
+    },
+    "ARCS": [
+      [
+        "act__place_order",
+        "items_source"
+      ],
+      [
+        "orders_p_3",
+        "orders__skip_1"
+      ],
+      [
+        "orders__init_loop_2",
+        "orders_p_5"
+      ],
+      [
+        "orders_p_5",
+        "act__payment_reminder"
+      ],
+      [
+        "act__item_out_of_stock",
+        "items_p_4"
+      ],
+      [
+        "act__pick_item",
+        "items_sink"
+      ],
+      [
+        "orders__skip_5",
+        "orders_p_4"
+      ],
+      [
+        "orders__skip_4",
+        "orders_p_5"
+      ],
+      [
+        "act__pay_order",
+        "orders_sink"
+      ],
+      [
+        "orders_p_4",
+        "act__pay_order"
+      ],
+      [
+        "packages_p_6",
+        "packages__skip_5"
+      ],
+      [
+        "customers_source",
+        "act__place_order"
+      ],
+      [
+        "packages_p_5",
+        "act__failed_delivery"
+      ],
+      [
+        "act__send_package",
+        "packages_p_3"
+      ],
+      [
+        "act__create_package",
+        "packages_source"
+      ],
+      [
+        "packages_p_3",
+        "packages__init_loop_2"
+      ],
+      [
+        "packages_p_3",
+        "packages__skip_1"
+      ],
+      [
+        "packages__init_loop_2",
+        "packages_p_5"
+      ],
+      [
+        "packages_source",
+        "act__send_package"
+      ],
+      [
+        "items_sink",
+        "act__create_package"
+      ],
+      [
+        "packages__skip_4",
+        "packages_p_5"
+      ],
+      [
+        "orders__skip_1",
+        "orders_p_4"
+      ],
+      [
+        "act__confirm_order",
+        "orders_p_3"
+      ],
+      [
+        "act__payment_reminder",
+        "orders_p_6"
+      ],
+      [
+        "items_source",
+        "items__skip_1"
+      ],
+      [
+        "items__skip_1",
+        "items_p_3"
+      ],
+      [
+        "items_p_4",
+        "act__reorder_item"
+      ],
+      [
+        "items_source",
+        "act__item_out_of_stock"
+      ],
+      [
+        "act__reorder_item",
+        "items_p_3"
+      ],
+      [
+        "items_p_3",
+        "act__pick_item"
+      ],
+      [
+        "orders_p_6",
+        "orders__skip_5"
+      ],
+      [
+        "orders_source",
+        "act__confirm_order"
+      ],
+      [
+        "act__package_delivered",
+        "packages_sink"
+      ],
+      [
+        "packages_p_4",
+        "act__package_delivered"
+      ],
+      [
+        "packages_p_6",
+        "packages__skip_4"
+      ],
+      [
+        "packages__skip_5",
+        "packages_p_4"
+      ],
+      [
+        "orders_p_3",
+        "orders__init_loop_2"
+      ],
+      [
+        "packages__skip_1",
+        "packages_p_4"
+      ],
+      [
+        "act__place_order",
+        "orders_source"
+      ],
+      [
+        "act__failed_delivery",
+        "packages_p_6"
+      ],
+      [
+        "orders_p_6",
+        "orders__skip_4"
+      ]
+    ]
+  },
+  "objects": {
+    "object_types": [
+      "customers",
+      "employees",
+      "items",
+      "orders",
+      "packages",
+      "products"
+    ],
+    "resource_object_types": [
+      "employees"
+    ],
+    "reusable_object_types": [
+      "customers",
+      "products"
+    ],
+    "object_lifecycle_events": {
+      "customers": {
+        "INITIATE": [
+          "place_order"
+        ]
+      },
+      "items": {
+        "CREATE": [
+          "place_order"
+        ],
+        "INCORPORATE": [
+          "create_package"
+        ]
+      },
+      "orders": {
+        "CREATE": [
+          "place_order"
+        ]
+      },
+      "packages": {
+        "CREATE": [
+          "create_package"
+        ]
+      }
+    },
+    "id_pools": {
+      "customers": [
+        "AlpenTech_Innovations_AG",
+        "Balkan_Minerals_d.o.o.",
+        "Baltic_Wave_Energies_Ltd.",
+        "Carpathian_Financial_Services_plc",
+        "Celtica_Green_Farms_Oy",
+        "Danube_Pharmaceuticals_BV",
+        "Eastern_Oak_Insurance_Zrt.",
+        "Golden_Fleece_Textiles_S.A.R.L.",
+        "Iberian_Sun_Solaridades_SA",
+        "Mediterranea_Luxury_Cruises_S.p.A.",
+        "Nordica_Systems_GmbH",
+        "Pantheon_Art_Gallery_Kft.",
+        "Riviera_Robotics_SAS",
+        "SwissPeak_Timepieces_AG",
+        "Vesta_Fashion_House_GmbH"
+      ],
+      "products": [
+        "Echo",
+        "Echo_Dot",
+        "Echo_Plus",
+        "Echo_Show_5",
+        "Echo_Show_8",
+        "Echo_Studio",
+        "Fire_Stick",
+        "Fire_Stick_4K",
+        "Kindle",
+        "Kindle_Paperwhite",
+        "MacBook_Air",
+        "MacBook_Pro",
+        "iPad",
+        "iPad_Air",
+        "iPad_Pro",
+        "iPad_mini",
+        "iPhone_11",
+        "iPhone_11_Pro",
+        "iPhone_8",
+        "iPhone_X"
+      ]
+    }
+  },
+  "relations": {
+    "object_relation_targets": {
+      "customers": [
+        "orders"
+      ],
+      "items": [
+        "products"
+      ],
+      "orders": [
+        "items"
+      ],
+      "packages": [
+        "items"
+      ]
+    },
+    "cardinality_distribution": {
+      "orders": {
+        "items": {
+          "1:1": 0.08,
+          "1:10": 0.007,
+          "1:11": 0.004,
+          "1:12": 0.001,
+          "1:13": 0.002,
+          "1:16": 0.001,
+          "1:2": 0.18,
+          "1:3": 0.244,
+          "1:4": 0.183,
+          "1:5": 0.138,
+          "1:6": 0.082,
+          "1:7": 0.05,
+          "1:8": 0.021,
+          "1:9": 0.009
+        }
+      },
+      "packages": {
+        "items": {
+          "1:1": 0.02,
+          "1:10": 0.053,
+          "1:11": 0.048,
+          "1:12": 0.034,
+          "1:13": 0.027,
+          "1:14": 0.019,
+          "1:15": 0.008,
+          "1:16": 0.008,
+          "1:17": 0.003,
+          "1:18": 0.001,
+          "1:19": 0.001,
+          "1:2": 0.052,
+          "1:20": 0.002,
+          "1:3": 0.09,
+          "1:4": 0.12,
+          "1:5": 0.118,
+          "1:6": 0.13,
+          "1:7": 0.108,
+          "1:8": 0.088,
+          "1:9": 0.072
+        }
+      }
+    },
+    "reusable_selection_distribution": {
+      "customers": {
+        "AlpenTech_Innovations_AG": 0.0605,
+        "Balkan_Minerals_d.o.o.": 0.073,
+        "Baltic_Wave_Energies_Ltd.": 0.068,
+        "Carpathian_Financial_Services_plc": 0.0655,
+        "Celtica_Green_Farms_Oy": 0.0735,
+        "Danube_Pharmaceuticals_BV": 0.0515,
+        "Eastern_Oak_Insurance_Zrt.": 0.07,
+        "Golden_Fleece_Textiles_S.A.R.L.": 0.0725,
+        "Iberian_Sun_Solaridades_SA": 0.0625,
+        "Mediterranea_Luxury_Cruises_S.p.A.": 0.064,
+        "Nordica_Systems_GmbH": 0.063,
+        "Pantheon_Art_Gallery_Kft.": 0.062,
+        "Riviera_Robotics_SAS": 0.076,
+        "SwissPeak_Timepieces_AG": 0.074,
+        "Vesta_Fashion_House_GmbH": 0.064
+      },
+      "products": {
+        "Echo": 0.047656,
+        "Echo_Dot": 0.048962,
+        "Echo_Plus": 0.051443,
+        "Echo_Show_5": 0.048048,
+        "Echo_Show_8": 0.050007,
+        "Echo_Studio": 0.049484,
+        "Fire_Stick": 0.052879,
+        "Fire_Stick_4K": 0.052226,
+        "Kindle": 0.045176,
+        "Kindle_Paperwhite": 0.051312,
+        "MacBook_Air": 0.048179,
+        "MacBook_Pro": 0.049876,
+        "iPad": 0.047265,
+        "iPad_Air": 0.052879,
+        "iPad_Pro": 0.051443,
+        "iPad_mini": 0.049876,
+        "iPhone_11": 0.044784,
+        "iPhone_11_Pro": 0.048701,
+        "iPhone_8": 0.053271,
+        "iPhone_X": 0.056535
+      }
+    }
+  },
+  "resources": {
+    "event_resource_pools": {
+      "confirm_order": {
+        "employees": [
+          "Christine_von_Dobbert",
+          "Istvan_Koren",
+          "Jan_Niklas_Adams",
+          "Mara_Nitschke",
+          "Wil_van_der_Aalst"
+        ]
+      },
+      "create_package": {
+        "employees": [
+          "Benedikt_Knopp",
+          "Christopher_Schwanen",
+          "Detlef_Wetzeler",
+          "Leah_Tacke_genannt_Unterberg",
+          "Mahsa_Bafrani",
+          "Marco_Pegoraro",
+          "Nina_Graves"
+        ]
+      },
+      "item_out_of_stock": {
+        "employees": [
+          "Benedikt_Knopp",
+          "Christopher_Schwanen",
+          "Detlef_Wetzeler",
+          "Leah_Tacke_genannt_Unterberg",
+          "Mahsa_Bafrani",
+          "Marco_Pegoraro",
+          "Nina_Graves"
+        ]
+      },
+      "pick_item": {
+        "employees": [
+          "Benedikt_Knopp",
+          "Christopher_Schwanen",
+          "Detlef_Wetzeler",
+          "Leah_Tacke_genannt_Unterberg",
+          "Mahsa_Bafrani",
+          "Marco_Pegoraro",
+          "Nina_Graves"
+        ]
+      },
+      "reorder_item": {
+        "employees": [
+          "Benedikt_Knopp",
+          "Christopher_Schwanen",
+          "Detlef_Wetzeler",
+          "Leah_Tacke_genannt_Unterberg",
+          "Mahsa_Bafrani",
+          "Marco_Pegoraro",
+          "Nina_Graves"
+        ]
+      },
+      "send_package": {
+        "employees": [
+          "Alessandro_Berti",
+          "Benedikt_Knopp",
+          "Christopher_Schwanen",
+          "Detlef_Wetzeler",
+          "Eduardo_Goulart_Rocha",
+          "Gyunam_Park",
+          "Leah_Tacke_genannt_Unterberg",
+          "Mahsa_Bafrani",
+          "Majid_Rafiei",
+          "Marco_Pegoraro",
+          "Nina_Graves",
+          "Viki_Peeva",
+          "Yisong_Zhang"
+        ]
+      }
+    },
+    "resource_event_participation": {
+      "employees": {
+        "Alessandro_Berti": [
+          "send_package"
+        ],
+        "Benedikt_Knopp": [
+          "create_package",
+          "item_out_of_stock",
+          "pick_item",
+          "reorder_item",
+          "send_package"
+        ],
+        "Christine_von_Dobbert": [
+          "confirm_order"
+        ],
+        "Christopher_Schwanen": [
+          "create_package",
+          "item_out_of_stock",
+          "pick_item",
+          "reorder_item",
+          "send_package"
+        ],
+        "Detlef_Wetzeler": [
+          "create_package",
+          "item_out_of_stock",
+          "pick_item",
+          "reorder_item",
+          "send_package"
+        ],
+        "Eduardo_Goulart_Rocha": [
+          "send_package"
+        ],
+        "Gyunam_Park": [
+          "send_package"
+        ],
+        "Istvan_Koren": [
+          "confirm_order"
+        ],
+        "Jan_Niklas_Adams": [
+          "confirm_order"
+        ],
+        "Leah_Tacke_genannt_Unterberg": [
+          "create_package",
+          "item_out_of_stock",
+          "pick_item",
+          "reorder_item",
+          "send_package"
+        ],
+        "Mahsa_Bafrani": [
+          "create_package",
+          "item_out_of_stock",
+          "pick_item",
+          "reorder_item",
+          "send_package"
+        ],
+        "Majid_Rafiei": [
+          "send_package"
+        ],
+        "Mara_Nitschke": [
+          "confirm_order"
+        ],
+        "Marco_Pegoraro": [
+          "create_package",
+          "item_out_of_stock",
+          "pick_item",
+          "reorder_item",
+          "send_package"
+        ],
+        "Nina_Graves": [
+          "create_package",
+          "item_out_of_stock",
+          "pick_item",
+          "reorder_item",
+          "send_package"
+        ],
+        "Viki_Peeva": [
+          "send_package"
+        ],
+        "Wil_van_der_Aalst": [
+          "confirm_order"
+        ],
+        "Yisong_Zhang": [
+          "send_package"
+        ]
+      }
+    },
+    "resource_event_duration_distribution": {
+      "employees": {
+        "Alessandro_Berti": {
+          "send_package": {
+            "mean": 160999.939,
+            "std": 227784.912
+          }
+        },
+        "Benedikt_Knopp": {
+          "create_package": {
+            "mean": 31754.42,
+            "std": 72658.459
+          },
+          "item_out_of_stock": {
+            "mean": 17198.133,
+            "std": 41538.045
+          },
+          "pick_item": {
+            "mean": 15614.932,
+            "std": 37616.917
+          },
+          "reorder_item": {
+            "mean": 18179.079,
+            "std": 42083.709
+          },
+          "send_package": {
+            "mean": 32482.103,
+            "std": 147364.704
+          }
+        },
+        "Christine_von_Dobbert": {
+          "confirm_order": {
+            "mean": 59715.473,
+            "std": 85405.584
+          }
+        },
+        "Christopher_Schwanen": {
+          "create_package": {
+            "mean": 19097.54,
+            "std": 46197.277
+          },
+          "item_out_of_stock": {
+            "mean": 19671.114,
+            "std": 46102.219
+          },
+          "pick_item": {
+            "mean": 18682.759,
+            "std": 57110.552
+          },
+          "reorder_item": {
+            "mean": 18421.77,
+            "std": 37305.462
+          },
+          "send_package": {
+            "mean": 22751.243,
+            "std": 67790.357
+          }
+        },
+        "Detlef_Wetzeler": {
+          "create_package": {
+            "mean": 24760.845,
+            "std": 54220.907
+          },
+          "item_out_of_stock": {
+            "mean": 18939.305,
+            "std": 43359.333
+          },
+          "pick_item": {
+            "mean": 19748.767,
+            "std": 89376.211
+          },
+          "reorder_item": {
+            "mean": 18706.484,
+            "std": 43446.682
+          },
+          "send_package": {
+            "mean": 27614.262,
+            "std": 127960.437
+          }
+        },
+        "Eduardo_Goulart_Rocha": {
+          "send_package": {
+            "mean": 169761.191,
+            "std": 332095.15
+          }
+        },
+        "Gyunam_Park": {
+          "send_package": {
+            "mean": 168095.622,
+            "std": 204207.59
+          }
+        },
+        "Istvan_Koren": {
+          "confirm_order": {
+            "mean": 67852.355,
+            "std": 102775.027
+          }
+        },
+        "Jan_Niklas_Adams": {
+          "confirm_order": {
+            "mean": 115631.312,
+            "std": 135792.934
+          }
+        },
+        "Leah_Tacke_genannt_Unterberg": {
+          "create_package": {
+            "mean": 41250.784,
+            "std": 334645.396
+          },
+          "item_out_of_stock": {
+            "mean": 16917.124,
+            "std": 41256.828
+          },
+          "pick_item": {
+            "mean": 18898.898,
+            "std": 44993.092
+          },
+          "reorder_item": {
+            "mean": 12991.004,
+            "std": 28205.937
+          },
+          "send_package": {
+            "mean": 14260.53,
+            "std": 34386.143
+          }
+        },
+        "Mahsa_Bafrani": {
+          "create_package": {
+            "mean": 31450.485,
+            "std": 129938.787
+          },
+          "item_out_of_stock": {
+            "mean": 17366.574,
+            "std": 43598.819
+          },
+          "pick_item": {
+            "mean": 17229.44,
+            "std": 57418.022
+          },
+          "reorder_item": {
+            "mean": 15567.086,
+            "std": 35666.212
+          },
+          "send_package": {
+            "mean": 26830.729,
+            "std": 69354.145
+          }
+        },
+        "Majid_Rafiei": {
+          "send_package": {
+            "mean": 195625.14,
+            "std": 247498.929
+          }
+        },
+        "Mara_Nitschke": {
+          "confirm_order": {
+            "mean": 100983.852,
+            "std": 117565.786
+          }
+        },
+        "Marco_Pegoraro": {
+          "create_package": {
+            "mean": 23285.869,
+            "std": 105925.727
+          },
+          "item_out_of_stock": {
+            "mean": 9939.293,
+            "std": 24291.13
+          },
+          "pick_item": {
+            "mean": 19889.446,
+            "std": 69650.671
+          },
+          "reorder_item": {
+            "mean": 15708.855,
+            "std": 35777.983
+          },
+          "send_package": {
+            "mean": 24888.035,
+            "std": 55745.707
+          }
+        },
+        "Nina_Graves": {
+          "create_package": {
+            "mean": 20496.239,
+            "std": 43488.649
+          },
+          "item_out_of_stock": {
+            "mean": 20297.134,
+            "std": 44863.049
+          },
+          "pick_item": {
+            "mean": 16489.164,
+            "std": 41528.406
+          },
+          "reorder_item": {
+            "mean": 16737.126,
+            "std": 36776.728
+          },
+          "send_package": {
+            "mean": 27458.924,
+            "std": 84161.677
+          }
+        },
+        "Viki_Peeva": {
+          "send_package": {
+            "mean": 198288.617,
+            "std": 471912.406
+          }
+        },
+        "Wil_van_der_Aalst": {
+          "confirm_order": {
+            "mean": 66815.272,
+            "std": 84354.53
+          }
+        },
+        "Yisong_Zhang": {
+          "send_package": {
+            "mean": 187502.519,
+            "std": 326413.885
+          }
+        }
+      }
+    }
+  },
+  "events": {
+    "event_object_roles": {
+      "confirm_order": {
+        "employees": [
+          "RESOURCE"
+        ],
+        "orders": [
+          "order"
+        ]
+      },
+      "create_package": {
+        "employees": [
+          "RESOURCE"
+        ],
+        "items": [
+          "INCORPORATE"
+        ],
+        "packages": [
+          "CREATE"
+        ]
+      },
+      "failed_delivery": {
+        "packages": [
+          "shipped package"
+        ]
+      },
+      "item_out_of_stock": {
+        "employees": [
+          "RESOURCE"
+        ],
+        "items": [
+          "item"
+        ]
+      },
+      "package_delivered": {
+        "packages": [
+          "shipped package"
+        ]
+      },
+      "pay_order": {
+        "orders": [
+          "order"
+        ]
+      },
+      "payment_reminder": {
+        "orders": [
+          "order"
+        ]
+      },
+      "pick_item": {
+        "employees": [
+          "RESOURCE"
+        ],
+        "items": [
+          "item"
+        ]
+      },
+      "place_order": {
+        "customers": [
+          "INITIATE"
+        ],
+        "items": [
+          "CREATE"
+        ],
+        "orders": [
+          "CREATE"
+        ],
+        "products": [
+          "product"
+        ]
+      },
+      "reorder_item": {
+        "employees": [
+          "RESOURCE"
+        ],
+        "items": [
+          "item"
+        ]
+      },
+      "send_package": {
+        "employees": [
+          "RESOURCE"
+        ],
+        "packages": [
+          "shipped package"
+        ]
+      }
+    },
+    "event_participants": {
+      "confirm_order": [
+        "employees",
+        "orders"
+      ],
+      "create_package": [
+        "employees",
+        "items",
+        "packages"
+      ],
+      "failed_delivery": [
+        "packages"
+      ],
+      "item_out_of_stock": [
+        "employees",
+        "items"
+      ],
+      "package_delivered": [
+        "packages"
+      ],
+      "pay_order": [
+        "orders"
+      ],
+      "payment_reminder": [
+        "orders"
+      ],
+      "pick_item": [
+        "employees",
+        "items"
+      ],
+      "place_order": [
+        "customers",
+        "items",
+        "orders",
+        "products"
+      ],
+      "reorder_item": [
+        "employees",
+        "items"
+      ],
+      "send_package": [
+        "employees",
+        "packages"
+      ]
+    },
+    "event_object_iteration": [
+      {
+        "iteration_type": "REUSABLE_SOURCE_EVENT_TARGET",
+        "event_type": "place_order",
+        "source_object_type": "customers",
+        "target_object_type": "orders",
+        "target_role": "CREATE",
+        "target_count_distribution": {
+          "1": 1.0
+        }
+      }
+    ]
+  },
+  "performance": {
+    "event_duration_distribution": {},
+    "arrival_distribution": {
+      "customers": {
+        "lambda": 1.063e-05,
+        "mean_interarrival_time": 94093.571,
+        "std_interarrival_time": 105032.462,
+        "start_place": "customers_source",
+        "start_events": [
+          "place_order"
+        ],
+        "is_top_level": true
+      }
+    }
+  },
+  "decision_points": {
+    "branch_probabilities": {}
+  }
+}
