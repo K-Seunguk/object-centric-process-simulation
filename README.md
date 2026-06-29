@@ -1,6 +1,6 @@
-# OCPS-VF Analysis and Simulation
+# Object Centric Process simulation
 
-This folder is a GitHub-ready copy of the OCPS-VF workflow. It keeps the source
+This folder is a GitHub-ready copy of the OCPS workflow. It keeps the source
 OCEL data, the analysis code used to build simulation parameters, the simulation
 runtime, generated simulation inputs/outputs, and evaluation assets.
 
